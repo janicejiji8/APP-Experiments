@@ -35,7 +35,7 @@ class PaymentProcessor:
     def __init__(self, strategy):
         self.strategy = strategy
 
-    # Step 4: Allow switching strategy at runtime
+    # Step 4: Switch strategy at runtime
     def set_strategy(self, strategy):
         self.strategy = strategy
 
@@ -43,17 +43,17 @@ class PaymentProcessor:
         self.strategy.pay(amount)
 
 
-# Main program
+# Main Program
 if __name__ == "__main__":
 
-    # Start with Credit Card
+    # Create payment processor with Credit Card strategy
     processor = PaymentProcessor(CreditCardPayment())
     processor.process_payment(1000)
 
-    # Switch to PayPal
+    # Switch to PayPal at runtime
     processor.set_strategy(PayPalPayment())
     processor.process_payment(2000)
 
-    # Switch to Bitcoin
+    # Switch to Bitcoin at runtime
     processor.set_strategy(BitcoinPayment())
     processor.process_payment(3000)
